@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bibs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Userid</th>
+                <th>Status</th>
+                <th>Textsummary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bib in bibs %}
+            <tr>
+                <td><a href="{{ path('bib_show', { 'id': bib.id }) }}">{{ bib.id }}</a></td>
+                <td>{{ bib.name }}</td>
+                <td>{{ bib.userId }}</td>
+                <td>{{ bib.status }}</td>
+                <td>{{ bib.textSummary }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bib_show', { 'id': bib.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bib_edit', { 'id': bib.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bib_new') }}">Create a new bib</a>
+        </li>
+    </ul>
+{% endblock %}

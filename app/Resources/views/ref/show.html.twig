@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ref</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ref.id }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ ref.userId }}</td>
+            </tr>
+            <tr>
+                <th>Authors</th>
+                <td>{{ ref.authors }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ ref.title }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{% if ref.year %}{{ ref.year|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>{{ ref.publisher }}</td>
+            </tr>
+            <tr>
+                <th>Placeofpub</th>
+                <td>{{ ref.placeOfPub }}</td>
+            </tr>
+            <tr>
+                <th>Pages</th>
+                <td>{{ ref.pages }}</td>
+            </tr>
+            <tr>
+                <th>Textsummary</th>
+                <td>{{ ref.textSummary }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ ref.status }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if ref.created %}{{ ref.created|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lastupdated</th>
+                <td>{% if ref.lastUpdated %}{{ ref.lastUpdated|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ref_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ref_edit', { 'id': ref.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
