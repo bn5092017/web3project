@@ -1,0 +1,20 @@
+/* basic stylesheet */
+
+body {
+    color: #000000;
+    background: #CCCCCC;
+}
+
+/* navigation styles */
+
+a {
+    text-decoration: none;
+    color: #30c;
+}
+
+a:hover {
+    color: #006;
+    text-decoration: underline;
+}
+
+

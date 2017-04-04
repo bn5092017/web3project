@@ -1,0 +1,7 @@
+/* stylesheet for tables */
+
+table, tr, td {
+    border: 0.1rem solid #000000;
+    padding: 0.5rem;
+}
+
