@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} refs list{% endblock %}
+{% block body %}
+    <h1>Refs list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Userid</th>
+            <th>Authors</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Publisher</th>
+            <th>Placeofpub</th>
+            <th>Pages</th>
+            <th>Textsummary</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Lastupdated</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ref in refs %}
+            <tr>
+                <td>{{ ref.id }}</td>
+                <td>{{ ref.userId }}</td>
+                <td>{{ ref.authors }}</td>
+                <td>{{ ref.title }}</td>
+                <td>{% if ref.year %}{{ ref.year }}{% endif %}</td>
+                <td>{{ ref.publisher }}</td>
+                <td>{{ ref.placeOfPub }}</td>
+                <td>{{ ref.pages }}</td>
+                <td>{{ ref.textSummary }}</td>
+                <td>{{ ref.status }}</td>
+                <td>{% if ref.created %}{{ ref.created|date('d-m-Y') }}{% endif %}</td>
+                <td>{% if ref.lastUpdated %}{{ ref.lastUpdated|date('d-m-Y') }}{% endif %}</td>
+                <td>add to BIB</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

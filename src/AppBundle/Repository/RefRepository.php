@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class RefRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllPublic()
+    {
+        return $this->createQueryBuilder('ref')
+            ->andWhere('ref.status= :status')
+            ->setParameter('status', 'public')
+            ->getQuery()
+            ->execute();
+    }
 }

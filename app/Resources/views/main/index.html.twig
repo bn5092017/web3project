@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} homepage{% endblock %}
 {% block body %}
     <h1>Welcome to the References Manager</h1>
+    <a href="{{ path('ref_list_public') }}">Refs</a>
 {% endblock %}
