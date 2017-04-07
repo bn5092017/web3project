@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Bib basket{% endblock %}
+
+{% block body %}
+
+    {% set basket_bib = app.session.get('basket') %}
+
+    <h1>List of Refs in basket</h1>
+
+    {% if basket_bib is null %}
+        <p>
+            You have no Refs in your basket!!!
+        </p>
+    {% else %}
+        <ul>
+            {% for ref in basket_bib %}
+                <li>
+                    <hr>
+                    id = {{ ref.Id }}
+                    <br>
+                    creator = {{ ref.userId }}
+                    <br>
+                    authors = {{ ref.authors }}
+                    <br>
+                    title = {{ ref.title }}
+                    <br>
+                    year = {{ ref.year }}
+                    <br>
+                    publisher = {{ ref.publisher }}
+                    <br>
+                    place of publication = {{ ref.placeOfPub }}
+                    <br>
+                    pages = {{ ref.pages }}
+                    <br>
+                    summary = {{ ref.textSummary }}
+                    <br>
+
+                    <a href="{{ path('ref_basket_delete', { 'id': ref.id }) }}">(remove)</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    <p>
+        <a href="{{ path('ref_basket_clear') }}">Clear all items in basket</a>
+    </p>
+    <p>
+        <a href="{{ path('ref_list_public') }}">Return to Refs list</a>
+    </p>
+
+{% endblock %}

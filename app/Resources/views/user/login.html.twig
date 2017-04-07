@@ -2,18 +2,8 @@
 
 {% block body %}
     <h1>User login</h1>
-
-    <form name="loginForm" method="POST" action="processLogin">
-        <h1>Login</h1>
-        <p>
-            Username:<input type="text" name="username">
-        </p>
-        <p>
-            Password:<input type="password" name="password">
-        </p>
-        <p>
-            <input type="submit" name="login" value="login"> or <input type="submit" name="login" value="sign up">
-        </p>
-    </form>
-    {{ message }}
+    {{ form_start(loginForm) }}
+    {{ form_widget(loginForm) }}
+    <input type="submit" value="login">
+    {{ form_end(loginForm) }}
 {% endblock %}

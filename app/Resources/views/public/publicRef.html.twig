@@ -35,7 +35,9 @@
                 <td>{{ ref.textSummary }}</td>
                 <td>{% if ref.created %}{{ ref.created|date('d-m-Y') }}{% endif %}</td>
                 <td>{% if ref.lastUpdated %}{{ ref.lastUpdated|date('d-m-Y') }}{% endif %}</td>
-                <td>add to BIB</td>
+                <td>
+                    <a href="{{ path('ref_basket_add', { 'id': ref.id }) }}">add to basket</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

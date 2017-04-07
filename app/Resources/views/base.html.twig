@@ -4,15 +4,17 @@
         <meta charset="UTF-8" />
         <title>Symfony web3{% block title %}{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/table.css') }}">
             <link rel="stylesheet" href="{{ asset('css/basic.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
     <nav>
-        <a href="{{ path('index') }}">home</a>
-        <a href="{{ path('login') }}">login</a>
+        <ul>
+        <li><a href="{{ path('index') }}">home</a></li>
+        <li><a href="{{ path('login') }}">login</a></li>
+        </ul>
     </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

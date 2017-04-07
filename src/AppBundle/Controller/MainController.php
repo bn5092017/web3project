@@ -8,7 +8,7 @@
 
 namespace AppBundle\Controller;
 
-
+use AppBundle\Form\UserLoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -81,10 +81,10 @@ class MainController extends Controller
      */
     public function loginAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(UserLoginType::class);
 
-        $em->getRepository('AppBundle:User')->processLogin();
-
-        return $this->render('user/login.html.twig');
+        return $this->render('user/login.html.twig', [
+            'loginForm' => $form->createView(),
+        ]);
     }
 }

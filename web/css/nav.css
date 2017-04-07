@@ -1,0 +1,48 @@
+/*Stylesheet for nav bar*/
+
+/*styling horizontal nav bar ul flex container and li flex items*/
+nav ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li{
+    flex: 1 0 10rem;
+}
+
+/*nav links color, font and styling*/
+nav a{
+    background-color: #666;
+    color: #CCC;
+    display: block;
+    border: 0.3rem inset #333;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    text-align: center;
+    text-decoration: none;
+    font-family: Impact, sans-serif;
+}
+
+nav a.currentPage {
+    background-color: #603;
+    color: #DACACA;
+}
+
+nav a:hover{
+    color: #CCC;
+    border-style: outset;
+    text-decoration: underline;
+}
+/* other navigation styles */
+
+a {
+    text-decoration: none;
+    color: #660;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
