@@ -16,7 +16,6 @@
             <th>Placeofpub</th>
             <th>Pages</th>
             <th>Textsummary</th>
-            <th>Status</th>
             <th>Created</th>
             <th>Lastupdated</th>
             <th>Actions</th>
@@ -34,7 +33,6 @@
                 <td>{{ ref.placeOfPub }}</td>
                 <td>{{ ref.pages }}</td>
                 <td>{{ ref.textSummary }}</td>
-                <td>{{ ref.status }}</td>
                 <td>{% if ref.created %}{{ ref.created|date('d-m-Y') }}{% endif %}</td>
                 <td>{% if ref.lastUpdated %}{{ ref.lastUpdated|date('d-m-Y') }}{% endif %}</td>
                 <td>add to BIB</td>

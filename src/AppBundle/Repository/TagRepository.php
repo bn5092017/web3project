@@ -10,4 +10,21 @@ namespace AppBundle\Repository;
  */
 class TagRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllPublic()
+    {
+        return $this->createQueryBuilder('tag')
+            ->andWhere('tag.status= :status')
+            ->setParameter('status', 'public')
+            ->getQuery()
+            ->execute();
+    }
+
+    public function findAllPending()
+    {
+        return $this->createQueryBuilder('tag')
+            ->andWhere('tag.status= :status')
+            ->setParameter('status', 'pending')
+            ->getQuery()
+            ->execute();
+    }
 }
