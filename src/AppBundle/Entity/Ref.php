@@ -24,6 +24,7 @@ class Ref
     /**
      * @var int
      *
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\Column(name="userId", type="integer")
      */
     private $userId;
@@ -73,7 +74,7 @@ class Ref
     /**
      * @var string
      *
-     * @ORM\Column(name="textSummary", type="string", length=255)
+     * @ORM\Column(name="textSummary", type="text")
      */
     private $textSummary;
 

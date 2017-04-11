@@ -45,7 +45,7 @@ class Bib
     /**
      * @var string
      *
-     * @ORM\Column(name="textSummary", type="string", length=255)
+     * @ORM\Column(name="textSummary", type="text")
      */
     private $textSummary;
 

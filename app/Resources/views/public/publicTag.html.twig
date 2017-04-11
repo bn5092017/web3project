@@ -10,7 +10,6 @@
             <th>Id</th>
             <th>Name</th>
             <th>Score</th>
-            <th>Status</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -20,8 +19,7 @@
                 <td>{{ tag.id }}</td>
                 <td>{{ tag.name }}</td>
                 <td>{{ tag.score }}</td>
-                <td>{{ tag.status }}</td>
-                <td><a href="{{ path('tag_edit', { 'id': tag.id }) }}">edit</a></td>
+                {% if tag.status == pending %}<td><a href="{{ path('tag_edit', { 'id': tag.id }) }}">edit</a></td>{% endif %}
             </tr>
         {% endfor %}
         </tbody>
@@ -29,7 +27,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('tag_new') }}">Create a new tag</a>
+            <a href="{{ path('tag_new') }}">Suggest a new tag</a>
         </li>
     </ul>
 {% endblock %}
