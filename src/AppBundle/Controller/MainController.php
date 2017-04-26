@@ -8,7 +8,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Form\UserLoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -74,17 +73,5 @@ class MainController extends Controller
         return $this->render('public/publicTag.html.twig', array(
             'tags' => $tags,
         ));
-    }
-
-    /**
-     * @Route("/user/login", name="login")
-     */
-    public function loginAction()
-    {
-        $form = $this->createForm(UserLoginType::class);
-
-        return $this->render('user/login.html.twig', [
-            'loginForm' => $form->createView(),
-        ]);
     }
 }
