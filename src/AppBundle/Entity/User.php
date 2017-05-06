@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -36,6 +37,14 @@ class User
     private $password;
 
     /**
+     * temporary property to store plaintext password
+     * not saved in database
+     *
+     * @var string
+     */
+    private $plainPassword;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
@@ -52,9 +61,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=255)
+     * @ORM\Column(name="roles", type="json_array")
      */
-    private $role;
+    private $roles = [];
 
     /**
      * @var string
@@ -130,6 +139,26 @@ class User
     }
 
     /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        //this is important for changing passwords in the database table using a Doctrine
+        //listener function as otherwise it will not be called if only this property is updated
+        $this->password = null;
+    }
+
+    /**
      * Set firstName
      *
      * @param string $firstName
@@ -178,27 +207,31 @@ class User
     }
 
     /**
-     * Set role
+     * Set roles
      *
-     * @param string $role
+     * @param array $roles
      *
      * @return User
      */
-    public function setRole($role)
+    public function setRoles(array $roles)
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
 
     /**
-     * Get role
+     * Get roles
      *
-     * @return string
+     * @return array
      */
-    public function getRole()
+    public function getRoles()
     {
-        return $this->role;
+        $roles = $this->roles;
+        if(!in_array('ROLE_USER', $roles)){
+            $roles[]='ROLE_USER';
+        }
+        return $roles;
     }
 
     /**
@@ -247,6 +280,30 @@ class User
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // leave blank as password will be salted automatically
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        //this will prevent the plainPassword being saved
+        $this->plainPassword = null;
     }
 }
 
