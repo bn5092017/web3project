@@ -4,7 +4,11 @@
     <h1>User creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.plainPassword, {'label':'Password'}) }}
+    {{ form_row(form.roles) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 

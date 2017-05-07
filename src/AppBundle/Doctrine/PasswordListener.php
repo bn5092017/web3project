@@ -6,7 +6,7 @@
  * Time: 21:38
  */
 
-namespace AppBundle\Security;
+namespace AppBundle\Doctrine;
 
 use AppBundle\Entity\User;
 use Doctrine\Common\EventSubscriber;

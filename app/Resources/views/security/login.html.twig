@@ -2,8 +2,12 @@
 
 {% block body %}
     <h1>User login</h1>
-    {{ form_start(loginForm) }}
-    {{ form_widget(loginForm) }}
+    {% if error %}
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    {% endif %}
+    {{ form_start(form) }}
+    {{ form_row(form._username) }}
+    {{ form_row(form._password) }}
     <input type="submit" value="login">
-    {{ form_end(loginForm) }}
+    {{ form_end(form) }}
 {% endblock %}

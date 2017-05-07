@@ -9,5 +9,17 @@
         <li><a href="{{ path('tag_list_public') }}">Tags</a></li>
         <li><a href="{{ path('tag_list_pending') }}">Pending Tags</a></li>
     </ul>
+    {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_LECTURER') %}
+    <ul>
+        <li><a href="{{ path('bib_index') }}">List all Bibs</a></li>
+        <li><a href="{{ path('ref_index') }}">List all Refs</a></li>
+        <li><a href="{{ path('tag_index') }}">List all Tags</a></li>
+    </ul>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <ul>
+        <li><a href="{{ path('user_index') }}">List of users</a></li>
+    </ul>
+    {% endif %}
     </nav>
 {% endblock %}

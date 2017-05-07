@@ -9,12 +9,12 @@
             <tr>
                 <th>Id</th>
                 <th>Username</th>
-                <th>Password</th>
+
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Role</th>
-                <th>Status</th>
-                <th>Image</th>
+
+
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,12 +23,10 @@
             <tr>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
                 <td>{{ user.username }}</td>
-                <td>{{ user.password }}</td>
+
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
-                <td>{{ user.role }}</td>
-                <td>{{ user.status }}</td>
-                <td>{{ user.image }}</td>
+
                 <td>
                     <ul>
                         <li>
