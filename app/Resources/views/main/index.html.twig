@@ -5,8 +5,8 @@
     <h1>Welcome to the References Manager</h1>
     <nav>
     <ul>
-        <li><a href="{{ path('ref_list_public') }}">Refs</a></li>
-        <li><a href="{{ path('tag_list_public') }}">Tags</a></li>
+        <li><a href="{{ path('ref_list_public') }}">Public Refs</a></li>
+        <li><a href="{{ path('tag_list_public') }}">Public Tags</a></li>
         <li><a href="{{ path('tag_list_pending') }}">Pending Tags</a></li>
     </ul>
     {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_LECTURER') %}

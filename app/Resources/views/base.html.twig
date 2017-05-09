@@ -20,6 +20,9 @@
             {% endif %}
         </ul>
     </nav>
+    {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_LECTURER') or is_granted('ROLE_ADMIN')%}
+        <h1>{{ app.user.username }} is logged in</h1>
+    {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Bib;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +37,7 @@ class BibController extends Controller
      *
      * @Route("/new", name="bib_new")
      * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_LECTURER')")
      */
     public function newAction(Request $request)
     {
@@ -44,6 +46,34 @@ class BibController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bib);
+            $em->flush($bib);
+
+            return $this->redirectToRoute('bib_show', array('id' => $bib->getId()));
+        }
+
+        return $this->render('bib/new.html.twig', array(
+            'bib' => $bib,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Creates a new bib entity.
+     *
+     * @Route("/new_private", name="bib_new_private")
+     * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_STUDENT')")
+     */
+    public function newPrivateBibAction(Request $request)
+    {
+        $bib = new Bib();
+        $form = $this->createForm('AppBundle\Form\PrivateBibType', $bib);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $bib->setStatus('private');
             $em = $this->getDoctrine()->getManager();
             $em->persist($bib);
             $em->flush($bib);

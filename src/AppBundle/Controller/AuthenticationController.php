@@ -27,7 +27,7 @@ class AuthenticationController extends Controller
     {
         //use built-in security error handling utility
         $authUtil = $this->get('security.authentication_utils');
-        $e = $authUtil->getLastAuthenticationError();//displays error message from
+        $e = $authUtil->getLastAuthenticationError();//displays error message
         $lastUsername = $authUtil->getLastUsername();//autofills username on failed login
         $form = $this->createForm(LoginForm::class, [
             '_username' => $lastUsername,

@@ -52,7 +52,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush($user);
 
-            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId(),));
         }
 
         return $this->render('user/new.html.twig', array(
@@ -73,6 +73,7 @@ class UserController extends Controller
 
         return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'roles' => $user->getRoles(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -92,7 +93,7 @@ class UserController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         return $this->render('user/edit.html.twig', array(

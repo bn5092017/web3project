@@ -39,8 +39,14 @@
     </table>
 
     <ul>
+        {% if is_granted ('ROLE_LECTURER') %}
         <li>
             <a href="{{ path('bib_new') }}">Create a new bib</a>
         </li>
+        {% elseif is_granted ('ROLE_STUDENT') %}
+        <li>
+            <a href="{{ path('bib_new_private') }}">Create a new bib</a>
+        </li>
+        {% endif %}
     </ul>
 {% endblock %}
