@@ -23,7 +23,7 @@ class AuthenticationControllerTest extends \PHPUnit_Framework_TestCase
 
         //Act
         if($this->passwordEncoder->isPasswordValid($username, $password)){
-            return true;
+            return;
         }
 
         //Assert

@@ -46,8 +46,14 @@
     <p>
         <a href="{{ path('ref_basket_clear') }}">Clear all items in basket</a>
     </p>
+    {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_LECTURER') %}
+    <p>
+        <a href="{{ path('ref_index') }}">Return to Refs list</a>
+    </p>
+    {% else %}
     <p>
         <a href="{{ path('ref_list_public') }}">Return to Refs list</a>
     </p>
+    {% endif %}
 
 {% endblock %}

@@ -43,7 +43,9 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
-        ]
+        ],
+        "test": "php phpunit.phar"
+
     },
     "config": {
         "platform": {

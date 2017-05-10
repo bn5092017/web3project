@@ -13,10 +13,11 @@
     <nav>
         <ul>
         <li><a href="{{ path('index') }}">home</a></li>
+        <li><a href="{{ path('ref_basket_index') }}">basket</a></li>
             {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_LECTURER') or is_granted('ROLE_ADMIN')%}{#checks if user is logged in#}
             <a href="{{ path('logout') }}">logout</a>{#displays logout option if user is logged in#}
             {% else %}
-                <a href="{{ path('login') }}">login</a>
+            <a href="{{ path('login') }}">login</a>
             {% endif %}
         </ul>
     </nav>

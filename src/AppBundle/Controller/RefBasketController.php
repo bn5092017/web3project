@@ -25,13 +25,8 @@ class RefBasketController extends Controller
      */
     public function indexAction()
     {
-        $argsArray = [
-        ];
-
-        $templateName = 'basket/index';
-        return $this->render($templateName . '.html.twig', $argsArray);
+        return $this->render('basket/index.html.twig');
     }
-
 
     /**
      * @Route("/add/{id}", name="ref_basket_add")
